@@ -1,75 +1,24 @@
-# Nuxt 3 Minimal Starter
+## 都道府県別総人口推移
+ - - -
+    
+### 概要
+RESAS APIから取得した都道府県毎の項目別人口推移をグラフ表示しています。
+  
+### 技術
+Nuxt.js
+  
+### デプロイ先
+[都道府県別総人口推移](https://yumemi-test-7milm21r2-kake-ps-projects.vercel.app/ 'Vercel')
+  
+### 開発規則
+- issue名
+`機能(_ファイル名)`
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+- ブランチ名
+`ブランチ名/#issue番号_動詞_機能`
+ブランチ名：feature, hotfix
+動詞：add, remove, update
 
-## Setup
-
-Make sure to install the dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- コミットメッセージ
+`種類_概要`
+種別：feat...新機能、fix...バグ修正、refactor...リファクタ
