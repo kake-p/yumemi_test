@@ -16,6 +16,15 @@ export default withNuxt(
       'vue/multi-word-component-names': 'error',
       'vue/require-v-for-key': 'error',
       'vue/no-use-v-if-with-v-for': 'error',
+      'unicorn/filename-case': [
+        'error',
+        {
+          cases: {
+            camelCase: true,
+            pascalCase: true,
+          },
+        },
+      ],
     },
   },
   stylistic.configs.customize({
