@@ -1,14 +1,14 @@
-type popuValues = {
+type PopuValues = {
   year: number
   value: number
 }
 
-type popuLavels = {
+export type PopuLavels = {
   label: string
-  data: popuValues[]
+  data: PopuValues[]
 }
 
 export type Population = {
   boundaryYear: number
-  data: popuLavels[]
+  data: PopuLavels[]
 }
