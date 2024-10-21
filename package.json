@@ -12,8 +12,10 @@
     "format": "eslint --fix . "
   },
   "dependencies": {
+    "chart.js": "^4.4.5",
     "nuxt": "^3.13.0",
     "vue": "latest",
+    "vue-chartjs": "^5.3.1",
     "vue-router": "latest"
   },
   "devDependencies": {

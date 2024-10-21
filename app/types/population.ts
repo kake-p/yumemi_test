@@ -1,4 +1,4 @@
-type PopuValues = {
+export type PopuValues = {
   year: number
   value: number
 }
