@@ -4,4 +4,10 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   srcDir: 'app/',
   modules: ['@nuxt/eslint'],
+  runtimeConfig: {
+    public: {
+      RESAS_API_KEY: process.env.RESAS_API_KEY,
+      baseURL: process.env.BASE_URL,
+    },
+  },
 })
