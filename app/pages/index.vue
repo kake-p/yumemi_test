@@ -15,7 +15,6 @@ const { prefectures, status } = useFetchPrefectures();
 const onSetPopulationType = (index: number) => {
   activePopulationTypeIndex.value = index;
 }
-
 const getPopulation = async (prefCode: number, prefName: string) => {
   if (!selectedPrefecture.value[prefCode]) {
     selectedPrefecture.value[prefCode] = { prefName: prefName, isChecked: true };
@@ -28,7 +27,6 @@ const getPopulation = async (prefCode: number, prefName: string) => {
     console.log('switched')
   }
 };
-
 const submitProps = () => {
   chartCache.value = Object.keys(selectedPrefecture.value)
     .filter(prefCode => selectedPrefecture.value[Number(prefCode)].isChecked)
@@ -37,7 +35,6 @@ const submitProps = () => {
       population: populationList.value[Number(prefCode)].data[activePopulationTypeIndex.value].data
     }));
 };
-
 onMounted(async() => {
   checked.value[13] = true;
   await getPopulation(13, '東京都');
@@ -46,9 +43,19 @@ onMounted(async() => {
 </script>
 
 <template>
-  <h1>都道府県を選択</h1>
+  <h2 class="title">人口区分を選択</h2>
+  <ul id="typeList">
+    <li v-for="(populationType, index) in populationTypes" :key="index">
+      <label>
+        <input type="radio" :value="index" v-model="activePopulationTypeIndex" @click="onSetPopulationType(index)"/>
+        {{ populationType }}
+      </label>
+    </li>
+  </ul>
+
+  <h2 class="title">都道府県を選択</h2>
   <p v-if="status === 'pending' || status === 'idle'">loading prefectures...</p>
-  <ul v-else-if="prefectures && prefectures.result">
+  <ul v-else-if="prefectures && prefectures.result" id="prefList">
     <li v-for="prefecture in prefectures.result" :key="prefecture.prefCode">
       <label>
       <input type="checkbox" :value="prefecture.prefCode" v-model="checked[prefecture.prefCode]" @change="getPopulation(prefecture.prefCode, prefecture.prefName)"/>
@@ -56,11 +63,50 @@ onMounted(async() => {
       </label>
     </li>
   </ul>
-  <div v-for="(populationType, index) in populationTypes" :key="index">
-    <button @click="onSetPopulationType(index)">{{ populationType }}</button>
-  </div> 
-  <button @click="submitProps">決定</button>
-  <p>{{ selectedPrefecture }}</p> 
-  <p>{{ chartCache }}</p>
+
+  <div id="buttonWrap">
+    <button id="submitButton" @click="submitProps">決定</button>
+  </div>
+
   <Chart :data="chartCache"/>
 </template>
+
+<style scoped>
+.title{
+  margin-top: 40px;
+}
+  #typeList{
+    display: flex;
+    gap: 10px;
+  }
+#prefList{
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+  #prefList li{
+    width: 100px;
+}
+  #buttonWrap{
+    margin: 10px 0 40px;
+    display: flex;
+    justify-content: end;
+    padding-right: 50px;
+  }
+  #submitButton{
+    all: unset;
+    color: #333;
+    padding: 4px 30px;
+    background-color: #fcfcfc;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    cursor: pointer;
+  }
+  #submitButton:hover{
+    box-shadow: 0 1px 2px #ccc;
+  }
+  #submitButton:active{
+    transform: translateY(2px);
+  }
+</style>
