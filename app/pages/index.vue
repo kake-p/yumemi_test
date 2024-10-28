@@ -68,17 +68,18 @@ onMounted(async() => {
     <button id="submitButton" @click="submitProps">決定</button>
   </div>
 
-  <Chart :data="chartCache"/>
+  <Chart id="chart" :data="chartCache"/>
 </template>
 
 <style scoped>
 .title{
   margin-top: 40px;
 }
-  #typeList{
-    display: flex;
-    gap: 10px;
-  }
+#typeList{
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
 #prefList{
   margin-top: 10px;
   display: flex;
@@ -108,5 +109,26 @@ onMounted(async() => {
   }
   #submitButton:active{
     transform: translateY(2px);
+  }
+
+  @media (max-width: 420px){
+    .title{
+      font-size: 16px;
+    }
+    #typeList{
+      font-size: 14px;
+    }
+    #prefList{
+      font-size: 14px;
+      justify-content: center;
+    }
+    #buttonWrap{
+      margin: 20px 0 40px;
+      justify-content: center;
+      padding-right: 0;
+    }
+    #chart{
+      margin-bottom: 40px;
+    }
   }
 </style>
