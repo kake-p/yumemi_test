@@ -11,4 +11,10 @@ header{
   background-color: #fcfcfc;
   border-bottom: 1px solid #ccc;
 }
+
+@media (max-width: 420px){
+  h1{
+    font-size: 20px;
+  }
+}
 </style>
