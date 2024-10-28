@@ -1,5 +1,14 @@
 <template>
   <header>
-    <h1>都道府県別の人口推移</h1>
+    <h1>都道府県別の人口推移グラフ</h1>
   </header>
 </template>
+
+<style scoped>
+header{
+  padding: 10px;
+  text-align: center;
+  background-color: #fcfcfc;
+  border-bottom: 1px solid #ccc;
+}
+</style>
