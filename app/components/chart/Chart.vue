@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ChartProps } from '~/types/view';
-import { Line } from 'vue-chartjs'
+import { Line } from 'vue-chartjs';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,7 +10,7 @@ import {
   Title,
   Tooltip,
   Legend
-} from 'chart.js'
+} from 'chart.js';
 
 ChartJS.register(
   CategoryScale,
@@ -20,16 +20,20 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend
-)
+);
 
-const props = defineProps<ChartProps>();
+const props = defineProps<{ data: ChartProps }>();
+
+const colors = [
+  '#42A5F5', '#66BB6A', '#FFA726', '#AB47BC', '#FF7043', '#26A69A', '#FFCA28', '#5C6BC0', '#EC407A', '#8D6E63'
+];
 
 const chartData = computed(() => {
-  const labels = props[0]?.population.map((data) => data.year) || [];
-  const datasets = props.map((pref) => ({
+  const labels = props.data[0]?.population.map((data) => data.year) || [];
+  const datasets = props.data.map((pref, index) => ({
     label: pref.prefecture,
-    backgroundColor: '#42A5F5',
-    borderColor: '#1E88E5',
+    backgroundColor: colors[index % colors.length],
+    borderColor: colors[index % colors.length],
     data: pref.population.map((data) => data.value),
   }));
 

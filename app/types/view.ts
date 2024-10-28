@@ -4,10 +4,10 @@ export type SelectedPref = {
   [prefCode: number]: { prefName: string, isChecked: boolean }
 }
 
-export type ChartProps = {
+export type ChartProps = Array<{
   prefecture: string
   population: PopuValues[]
-}[]
+}>
 
 export type PopuList = {
   [prefCode: number]: Population
