@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ChartProps } from '~/types/props';
+import type { ChartProps } from '~/types/view';
 import { Line } from 'vue-chartjs'
 import {
   Chart as ChartJS,
@@ -24,17 +24,21 @@ ChartJS.register(
 
 const props = defineProps<ChartProps>();
 
-const chartData = computed(() => ({
-  labels: props.population.map((data) => data.year),
-  datasets: [
-    {
-      label: props.prefecture,
-      backgroundColor: '#42A5F5',
-      borderColor: '#1E88E5',
-      data: props.population.map((data) => data.value),
-    },
-  ],
-}));
+const chartData = computed(() => {
+  const labels = props[0]?.population.map((data) => data.year) || [];
+  const datasets = props.map((pref) => ({
+    label: pref.prefecture,
+    backgroundColor: '#42A5F5',
+    borderColor: '#1E88E5',
+    data: pref.population.map((data) => data.value),
+  }));
+
+  return {
+    labels,
+    datasets,
+  };
+});
+
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: true,

@@ -3,12 +3,12 @@ export type PopuValues = {
   value: number
 }
 
-export type PopuLavels = {
+export type PopuLabels = {
   label: string
   data: PopuValues[]
 }
 
 export type Population = {
   boundaryYear: number
-  data: PopuLavels[]
+  data: PopuLabels[]
 }
