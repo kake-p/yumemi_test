@@ -8,7 +8,7 @@ RESAS APIから取得した都道府県毎の項目別人口推移をグラフ�
 Nuxt.js
   
 ### デプロイ先
-[都道府県別総人口推移](https://yumemi-test-8kywa4uy8-kake-ps-projects.vercel.app/ 'Vercel')
+[都道府県別総人口推移](https://yumemi-test-mu.vercel.app/ 'Vercel')
   
 ### 工夫点
 - apiキーを.envファイルに秘匿してセキュリティに配慮しました。
